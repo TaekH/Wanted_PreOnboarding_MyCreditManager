@@ -41,28 +41,12 @@ final class Main {
                 
                 try selectManagerOption(readLine()!)
             }
-            catch InvalidInputError.invalidRunInput {
-                print("뭔가 입력이 잘못되었습니다. 1~5 사이의 숫자 혹은 X를 입력해주세요.")
-            }
             catch InvalidInputError.exit {
                 print("프로그램을 종료합니다...")
                 return
             }
-            catch InvalidInputError.invalidStudentName {
-                print("입력이 잘못되었습니다. 다시 확인해주세요.")
-            }
-            catch InvalidInputError.invalidInputFormat {
-                print("입력이 잘못되었습니다. 다시 확인해주세요.")
-            }
-            catch InvalidInputError.missingStudentName(let student) {
-                print("\(student) 학생을 찾지못했습니다.")
-            }
-            catch InvalidInputError.studentNameAlreadyExists(let student) {
-                print("\(student)은 이미 존재하는 학생입니다. 추가하지 않습니다.")
-            }
             catch {
-                print("오류로 인해 프로그램을 종료합니다...")
-                return
+                print(error)
             }
         }
     }
@@ -76,3 +60,4 @@ enum Function: String {
     case getGpa = "5"
     case exit = "X"
 }
+
